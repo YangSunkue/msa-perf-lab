@@ -1,0 +1,47 @@
+# OS / 환경 관련
+.DS_Store
+*.log
+*.tmp
+*.swp
+*.swo
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+.env.*
+instance/
+*.sqlite3
+
+# Flask
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Go
+bin/
+vendor/
+*.exe
+*.test
+*.out
+
+# Docker
+*.pid
+*.seed
+docker-compose.override.yml
+postgres_data/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# 기타
+*.bak
+*.old
