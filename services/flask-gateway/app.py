@@ -1,7 +1,7 @@
 from flask import Flask
 from flask.json.provider import DefaultJSONProvider
 from model import db
-from route import blueprints
+from routes import blueprints
 import config
 
 class CustomJSONProvider(DefaultJSONProvider):

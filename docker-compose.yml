@@ -1,4 +1,6 @@
 services:
+
+  # Flask Gateway
   flask-gateway:
     build: ./services/flask-gateway
     container_name: msa-perf-flask-gateway
@@ -9,10 +11,23 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      go-core:
+        condition: service_started
     networks:
       - msa-perf-network
     restart: unless-stopped
   
+  # Go Core
+  go-core:
+    build: ./services/go-core
+    container_name: msa-perf-go-core
+    ports:
+      - "8080:8080"
+    networks:
+      - msa-perf-network
+    restart: unless-stopped
+
+  # PostgreSQL
   postgres:
     image: postgres:16
     container_name: msa-perf-postgres
