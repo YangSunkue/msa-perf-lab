@@ -11,18 +11,19 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      go-core:
+      gocore:
         condition: service_started
     networks:
       - msa-perf-network
     restart: unless-stopped
   
   # Go Core
-  go-core:
-    build: ./services/go-core
-    container_name: msa-perf-go-core
+  gocore:
+    build: ./services/gocore
+    container_name: msa-perf-gocore
     ports:
       - "8080:8080"
+      - "50051:50051"
     networks:
       - msa-perf-network
     restart: unless-stopped

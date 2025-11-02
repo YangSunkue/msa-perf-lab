@@ -1,6 +1,6 @@
 import requests
 
-GO_SERVER_BASE_URL = 'http://go-core:8080'
+GO_SERVER_BASE_URL = 'http://gocore:8080'
 
 def ping():
     try:

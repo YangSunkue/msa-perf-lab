@@ -2,7 +2,7 @@
 package router
 
 import (
-	"go-core/handler"
+	"gocore/handler"
 
 	"github.com/gin-gonic/gin"
 )
