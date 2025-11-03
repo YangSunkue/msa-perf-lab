@@ -1,7 +1,9 @@
-from .route import bp
-from .external_route import bp as external_bp
+from routes.internal.user_route_internal import bp as user_internal_bp
+from routes.external_rest.ping_route_rest import bp as ping_rest_bp
+from routes.external_grpc.ping_route_grpc import bp as ping_grpc_bp
 
 blueprints = [
-    bp,
-    external_bp
+    user_internal_bp,
+    ping_rest_bp,
+    ping_grpc_bp
 ]

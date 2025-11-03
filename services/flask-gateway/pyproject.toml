@@ -15,7 +15,9 @@ dependencies = [
     "psycopg2-binary (>=2.9.11,<3.0.0)",
     "requests (>=2.32.5,<3.0.0)",
     "flask-sqlalchemy (>=3.1.1,<4.0.0)",
-    "dotenv (>=0.9.9,<0.10.0)"
+    "dotenv (>=0.9.9,<0.10.0)",
+    "grpcio (>=1.76.0,<2.0.0)",
+    "grpcio-tools (>=1.76.0,<2.0.0)"
 ]
 
 

@@ -3,7 +3,7 @@ package servicegrpc
 
 import (
 	"context"
-	pb "gocore/proto"
+	pb "gocore/pkg/proto"
 )
 
 type CoreServiceServer struct {

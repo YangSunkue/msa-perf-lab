@@ -2,9 +2,9 @@
 package main
 
 import (
-	pb "gocore/proto"
-	"gocore/router"
-	"gocore/servicegrpc"
+	"gocore/internal/router"
+	servicegrpc "gocore/internal/service/grpc"
+	pb "gocore/pkg/proto"
 	"log"
 	"net"
 	"net/http"

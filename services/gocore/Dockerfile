@@ -12,7 +12,7 @@ RUN go mod download
 COPY . .
 
 # Go 실행 파일 빌드
-RUN go build -o main .
+RUN go build -o main ./cmd/server
 
 # 런타임 스테이지 (최종 실행 이미지)
 FROM alpine:latest

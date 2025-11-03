@@ -2,7 +2,7 @@
 package handler
 
 import (
-	"gocore/service"
+	service "gocore/internal/service/rest"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
