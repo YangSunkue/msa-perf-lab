@@ -24,14 +24,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/service.proto\x12\x05proto\"\x1e\n\x0bPingRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1d\n\x0cPingResponse\x12\r\n\x05reply\x18\x01 \x01(\t2>\n\x0b\x43oreService\x12/\n\x04Ping\x12\x12.proto.PingRequest\x1a\x13.proto.PingResponseB\x14Z\x12gocore/proto;protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/service.proto\x12\x05proto\"\x1e\n\x0bPingRequest\x12\x0f\n\x07payload\x18\x01 \x01(\t\"\x1d\n\x0cPingResponse\x12\r\n\x05reply\x18\x01 \x01(\t2>\n\x0b\x43oreService\x12/\n\x04Ping\x12\x12.proto.PingRequest\x1a\x13.proto.PingResponseB\x18Z\x16gocore/pkg/proto;protob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'proto.service_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z\022gocore/proto;proto'
+  _globals['DESCRIPTOR']._serialized_options = b'Z\026gocore/pkg/proto;proto'
   _globals['_PINGREQUEST']._serialized_start=30
   _globals['_PINGREQUEST']._serialized_end=60
   _globals['_PINGRESPONSE']._serialized_start=62

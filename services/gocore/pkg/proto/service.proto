@@ -2,14 +2,14 @@ syntax = "proto3";
 
 package proto;
 
-option go_package = "gocore/proto;proto";
+option go_package = "gocore/pkg/proto;proto";
 
 service CoreService {
     rpc Ping (PingRequest) returns (PingResponse);
 }
 
 message PingRequest {
-    string message = 1;
+    string payload = 1;
 }
 
 message PingResponse {

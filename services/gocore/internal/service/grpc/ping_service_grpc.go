@@ -12,6 +12,6 @@ type CoreServiceServer struct {
 
 func (s *CoreServiceServer) Ping(ctx context.Context, req *pb.PingRequest) (*pb.PingResponse, error) {
 	return &pb.PingResponse{
-		Reply: "Hello from gRPC (Go), got: " + req.Message,
+		Reply: req.Payload,
 	}, nil
 }
