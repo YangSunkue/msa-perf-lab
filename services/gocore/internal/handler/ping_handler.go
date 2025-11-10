@@ -2,13 +2,13 @@
 package handler
 
 import (
-	service "gocore/internal/service/rest"
+	rest "gocore/internal/service/rest"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-// end_to_end/rest_vs_grpc/k6_rest.js
+// PingHandler end_to_end/rest_vs_grpc/k6_rest.js
 func PingHandler(c *gin.Context) {
 	var req map[string]string
 	if err := c.BindJSON(&req); err != nil {
@@ -16,7 +16,7 @@ func PingHandler(c *gin.Context) {
 		return
 	}
 
-	message := service.GetPingMessage()
+	message := rest.GetPingMessage()
 	c.JSON(http.StatusOK, gin.H{
 		"message":      message,
 		"payload_data": req["payload"],

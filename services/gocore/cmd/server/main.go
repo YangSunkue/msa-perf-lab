@@ -4,6 +4,7 @@ package main
 import (
 	"gocore/internal/router"
 	servicegrpc "gocore/internal/service/grpc"
+	"gocore/internal/service/mq"
 	pb "gocore/pkg/proto"
 	"log"
 	"net"
@@ -14,6 +15,8 @@ import (
 )
 
 func main() {
+
+	// gRPC 서버 시작
 	go func() {
 		lis, err := net.Listen("tcp", ":50051")
 		if err != nil {
@@ -31,6 +34,10 @@ func main() {
 		}
 	}()
 
+	// RabbitMQ Consumer 시작
+	go mq.StartConsumer()
+
+	// REST 서버 시작
 	r := router.SetupRouter()
 
 	log.Println("Rest server started on port 8080")

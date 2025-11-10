@@ -10,6 +10,7 @@ func SetupRouter() *gin.Engine {
 	r.RedirectTrailingSlash = false
 
 	InitPingRoutes(r)
+	InitMqAsyncRoutes(r)
 
 	return r
 }

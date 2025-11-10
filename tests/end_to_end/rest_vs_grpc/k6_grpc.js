@@ -1,31 +1,31 @@
 import http from 'k6/http';
 import { check } from 'k6';
 
-/*
-  grpc 단일 테스트용 스크립트 파일입니다.
-
-  실행 예시:
-    테스트 + 데이터 저장: k6 run --out influxdb=http://localhost:8086/k6 tests/end_to_end/rest_vs_grpc/k6_grpc.js
-    테스트만: k6 run tests/end_to_end/rest_vs_grpc/k6_grpc.js
-*/
-
 const RATE = __ENV.RATE ? parseInt(__ENV.RATE) : 100;
 const DURATION = __ENV.DURATION ? __ENV.DURATION : '30s';
 
+// 쉘스크립트에서 넘겨줄 값들
+const PAYLOAD_SIZE = __ENV.PAYLOAD_SIZE ? parseInt(__ENV.PAYLOAD_SIZE) : 10;
+const SCENARIO_NAME = __ENV.SCENARIO_NAME || `grpc_ping_test_${PAYLOAD_SIZE}`;
+
 export const options = {
     scenarios: {
-        grpc_ping_test: {
+        [SCENARIO_NAME]: {
             executor: 'constant-arrival-rate',
-            rate: RATE,                 // 초당 요청 수
-            timeUnit: '1s',             // rate 기준 단위
-            duration: DURATION,         // 전체 테스트 시간
-            preAllocatedVUs: 50,        // 최소 VU
-            maxVUs: 200                 // 최대 VU
+            rate: RATE,
+            timeUnit: '1s',
+            duration: DURATION,
+            preAllocatedVUs: 50,
+            maxVUs: 200,
+            tags: {
+                payload_size: `${PAYLOAD_SIZE}`,
+                protocol: 'grpc'
+            }
         }
     },
     thresholds: {
-        'http_req_duration': ['p(95)<500'], // 전체 요청 95%의 응답속도는 500ms 미만이어야 함
-        'http_req_failed': ['rate<0.02']    // 실패율 2% 미만이어야 함
+        'http_req_duration': ['p(95)<500'],
+        'http_req_failed': ['rate<0.02']
     }
 };
 
@@ -33,11 +33,11 @@ export default function () {
     const url = 'http://localhost:5001/grpc/ping';
 
     const payload = JSON.stringify({
-        size: 1000000
+        size: PAYLOAD_SIZE
     });
 
     const params = {
-        tags: { payload_size: '1000000', protocol: 'grpc'},
+        tags: { payload_size: `${PAYLOAD_SIZE}`, protocol: 'grpc' },
         headers: {
             'Content-Type': 'application/json',
             'Accpet': 'application/json',
@@ -47,7 +47,6 @@ export default function () {
 
     const res = http.post(url, payload, params);
 
-    // 성공/실패 체크 함수
     check(res, {
         'status is 200': (r) => r.status === 200,
         'response not empty': (r) => r.body && r.body.length > 0

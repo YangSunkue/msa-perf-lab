@@ -13,6 +13,8 @@ services:
         condition: service_healthy
       gocore:
         condition: service_started
+      rabbitmq:
+        condition: service_healthy
     networks:
       - msa-perf-network
     restart: unless-stopped
@@ -24,9 +26,34 @@ services:
     ports:
       - "8080:8080"
       - "50051:50051"
+    env_file:
+      - .env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
     networks:
       - msa-perf-network
     restart: unless-stopped
+
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: msa-perf-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${MQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${MQ_PASSWORD}
+    networks:
+      - msa-perf-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   # PostgreSQL
   postgres:
