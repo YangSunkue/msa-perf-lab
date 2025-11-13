@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/service.proto\x12\x05proto\"\x1e\n\x0bPingRequest\x12\x0f\n\x07payload\x18\x01 \x01(\t\"\x1d\n\x0cPingResponse\x12\r\n\x05reply\x18\x01 \x01(\t2>\n\x0b\x43oreService\x12/\n\x04Ping\x12\x12.proto.PingRequest\x1a\x13.proto.PingResponseB\x18Z\x16gocore/pkg/proto;protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/service.proto\x12\x05proto\"\x1e\n\x0bPingRequest\x12\x0f\n\x07payload\x18\x01 \x01(\t\"\x1d\n\x0cPingResponse\x12\r\n\x05reply\x18\x01 \x01(\t\"3\n\x17HeavyCalculationRequest\x12\x18\n\x10\x63omplexity_level\x18\x01 \x01(\x05\"D\n\x18HeavyCalculationResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x17\n\x0fresult_checksum\x18\x02 \x01(\x03\x32>\n\x0b\x43oreService\x12/\n\x04Ping\x12\x12.proto.PingRequest\x1a\x13.proto.PingResponse2m\n\x0f\x43puHeavyService\x12Z\n\x17\x45xecuteHeavyCalculation\x12\x1e.proto.HeavyCalculationRequest\x1a\x1f.proto.HeavyCalculationResponseB\x18Z\x16gocore/pkg/proto;protob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -36,6 +36,12 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PINGREQUEST']._serialized_end=60
   _globals['_PINGRESPONSE']._serialized_start=62
   _globals['_PINGRESPONSE']._serialized_end=91
-  _globals['_CORESERVICE']._serialized_start=93
-  _globals['_CORESERVICE']._serialized_end=155
+  _globals['_HEAVYCALCULATIONREQUEST']._serialized_start=93
+  _globals['_HEAVYCALCULATIONREQUEST']._serialized_end=144
+  _globals['_HEAVYCALCULATIONRESPONSE']._serialized_start=146
+  _globals['_HEAVYCALCULATIONRESPONSE']._serialized_end=214
+  _globals['_CORESERVICE']._serialized_start=216
+  _globals['_CORESERVICE']._serialized_end=278
+  _globals['_CPUHEAVYSERVICE']._serialized_start=280
+  _globals['_CPUHEAVYSERVICE']._serialized_end=389
 # @@protoc_insertion_point(module_scope)

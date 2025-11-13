@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify
 from services.external_rest import mq_async_service
 
 bp = Blueprint('mq_async', __name__, url_prefix='/rest/mq_async')

@@ -15,3 +15,16 @@ message PingRequest {
 message PingResponse {
     string reply = 1;
 }
+
+service CpuHeavyService {
+    rpc ExecuteHeavyCalculation (HeavyCalculationRequest) returns (HeavyCalculationResponse);
+}
+
+message HeavyCalculationRequest {
+    int32 complexity_level = 1;
+}
+
+message HeavyCalculationResponse {
+    bool success = 1;
+    int64 result_checksum = 2;
+}

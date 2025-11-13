@@ -1,5 +1,52 @@
 services:
 
+  # Prometheus
+  prometheus:
+    image: prom/prometheus:v2.47.1
+    container_name: msa-perf-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../prometheus.yml:/etc/prometheus/prometheus.yml
+      - msa-perf-prometheus-data:/prometheus
+    command: --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=30d
+    networks:
+      - msa-perf-network
+    restart: unless-stopped
+    depends_on:
+      cadvisor:
+        condition: service_started
+      node-exporter:
+        condition: service_started
+    
+  # Node Exporter
+  node-exporter:
+    image: prom/node-exporter:v1.6.1
+    container_name: msa-perf-node-exporter
+    networks:
+      - msa-perf-network
+    ports:
+      - "9100:9100"
+    restart: unless-stopped
+    command:
+      - '--path.rootfs=/rootfs'
+    volumes:
+      - '/:/rootfs:ro'
+  
+  # cAdvisor
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: msa-perf-cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+    networks:
+      - msa-perf-network
+    restart: unless-stopped
+
   # Influxdb
   influxdb:
     image: influxdb:1.8
@@ -39,11 +86,14 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
+      prometheus:
+        condition: service_started
 
 
 volumes:
   msa-perf-influxdb-data:
   msa-perf-grafana-data:
+  msa-perf-prometheus-data:
 
 networks:
   msa-perf-network:

@@ -25,6 +25,7 @@ func main() {
 
 		grpcServer := grpc.NewServer()
 		pb.RegisterCoreServiceServer(grpcServer, &servicegrpc.CoreServiceServer{})
+		pb.RegisterCpuHeavyServiceServer(grpcServer, &servicegrpc.CPUHeavyServiceServer{})
 
 		reflection.Register(grpcServer)
 

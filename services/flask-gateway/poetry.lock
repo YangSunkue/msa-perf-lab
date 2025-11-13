@@ -688,6 +688,21 @@ tornado = ["tornado"]
 twisted = ["twisted"]
 
 [[package]]
+name = "prometheus-client"
+version = "0.23.1"
+description = "Python client for the Prometheus monitoring system."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "prometheus_client-0.23.1-py3-none-any.whl", hash = "sha256:dd1913e6e76b59cfe44e7a4b83e01afc9873c1bdfd2ed8739f1e76aeca115f99"},
+    {file = "prometheus_client-0.23.1.tar.gz", hash = "sha256:6ae8f9081eaaaf153a2e959d2e6c4f4fb57b12ef76c8c7980202f1e57b48b2ce"},
+]
+
+[package.extras]
+twisted = ["twisted"]
+
+[[package]]
 name = "protobuf"
 version = "6.33.0"
 description = ""
@@ -1013,4 +1028,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "85ce155b56f80e03c9d522b975c056ea2716df0ab0595900aa1fa56aefbb4886"
+content-hash = "2456b5dcd90410b4a77f90d5afc6703779354fbe8fa1895a9b1a05f4a86c6d0f"

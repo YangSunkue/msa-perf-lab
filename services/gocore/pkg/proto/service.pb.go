@@ -109,6 +109,102 @@ func (x *PingResponse) GetReply() string {
 	return ""
 }
 
+type HeavyCalculationRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	ComplexityLevel int32                  `protobuf:"varint,1,opt,name=complexity_level,json=complexityLevel,proto3" json:"complexity_level,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *HeavyCalculationRequest) Reset() {
+	*x = HeavyCalculationRequest{}
+	mi := &file_service_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HeavyCalculationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HeavyCalculationRequest) ProtoMessage() {}
+
+func (x *HeavyCalculationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HeavyCalculationRequest.ProtoReflect.Descriptor instead.
+func (*HeavyCalculationRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *HeavyCalculationRequest) GetComplexityLevel() int32 {
+	if x != nil {
+		return x.ComplexityLevel
+	}
+	return 0
+}
+
+type HeavyCalculationResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Success        bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	ResultChecksum int64                  `protobuf:"varint,2,opt,name=result_checksum,json=resultChecksum,proto3" json:"result_checksum,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *HeavyCalculationResponse) Reset() {
+	*x = HeavyCalculationResponse{}
+	mi := &file_service_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HeavyCalculationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HeavyCalculationResponse) ProtoMessage() {}
+
+func (x *HeavyCalculationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HeavyCalculationResponse.ProtoReflect.Descriptor instead.
+func (*HeavyCalculationResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *HeavyCalculationResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *HeavyCalculationResponse) GetResultChecksum() int64 {
+	if x != nil {
+		return x.ResultChecksum
+	}
+	return 0
+}
+
 var File_service_proto protoreflect.FileDescriptor
 
 const file_service_proto_rawDesc = "" +
@@ -117,9 +213,16 @@ const file_service_proto_rawDesc = "" +
 	"\vPingRequest\x12\x18\n" +
 	"\apayload\x18\x01 \x01(\tR\apayload\"$\n" +
 	"\fPingResponse\x12\x14\n" +
-	"\x05reply\x18\x01 \x01(\tR\x05reply2>\n" +
+	"\x05reply\x18\x01 \x01(\tR\x05reply\"D\n" +
+	"\x17HeavyCalculationRequest\x12)\n" +
+	"\x10complexity_level\x18\x01 \x01(\x05R\x0fcomplexityLevel\"]\n" +
+	"\x18HeavyCalculationResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12'\n" +
+	"\x0fresult_checksum\x18\x02 \x01(\x03R\x0eresultChecksum2>\n" +
 	"\vCoreService\x12/\n" +
-	"\x04Ping\x12\x12.proto.PingRequest\x1a\x13.proto.PingResponseB\x14Z\x12gocore/proto;protob\x06proto3"
+	"\x04Ping\x12\x12.proto.PingRequest\x1a\x13.proto.PingResponse2m\n" +
+	"\x0fCpuHeavyService\x12Z\n" +
+	"\x17ExecuteHeavyCalculation\x12\x1e.proto.HeavyCalculationRequest\x1a\x1f.proto.HeavyCalculationResponseB\x18Z\x16gocore/pkg/proto;protob\x06proto3"
 
 var (
 	file_service_proto_rawDescOnce sync.Once
@@ -133,16 +236,20 @@ func file_service_proto_rawDescGZIP() []byte {
 	return file_service_proto_rawDescData
 }
 
-var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_service_proto_goTypes = []any{
-	(*PingRequest)(nil),  // 0: proto.PingRequest
-	(*PingResponse)(nil), // 1: proto.PingResponse
+	(*PingRequest)(nil),              // 0: proto.PingRequest
+	(*PingResponse)(nil),             // 1: proto.PingResponse
+	(*HeavyCalculationRequest)(nil),  // 2: proto.HeavyCalculationRequest
+	(*HeavyCalculationResponse)(nil), // 3: proto.HeavyCalculationResponse
 }
 var file_service_proto_depIdxs = []int32{
 	0, // 0: proto.CoreService.Ping:input_type -> proto.PingRequest
-	1, // 1: proto.CoreService.Ping:output_type -> proto.PingResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: proto.CpuHeavyService.ExecuteHeavyCalculation:input_type -> proto.HeavyCalculationRequest
+	1, // 2: proto.CoreService.Ping:output_type -> proto.PingResponse
+	3, // 3: proto.CpuHeavyService.ExecuteHeavyCalculation:output_type -> proto.HeavyCalculationResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -159,9 +266,9 @@ func file_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_service_proto_rawDesc), len(file_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_service_proto_goTypes,
 		DependencyIndexes: file_service_proto_depIdxs,
