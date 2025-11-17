@@ -18,3 +18,8 @@ MQ_HOST = os.getenv('MQ_HOST')
 MQ_PORT = os.getenv('MQ_PORT')
 MQ_USER = os.getenv('MQ_USER')
 MQ_PASSWORD = os.getenv('MQ_PASSWORD')
+
+# Redis
+REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_PORT = os.getenv('REDIS_PORT')
+REDIS_DB = os.getenv('REDIS_DB')

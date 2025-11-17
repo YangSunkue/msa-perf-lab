@@ -1,8 +1,6 @@
-from kombu import Connection, Exchange, Queue
-import json
+from kombu import Connection, Queue
 import logging
-
-import config
+from configs import config
 
 
 logger = logging.getLogger(__name__)

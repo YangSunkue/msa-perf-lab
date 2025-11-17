@@ -4,6 +4,7 @@ from routes.external_grpc.ping_route_grpc import bp as ping_grpc_bp
 from routes.external_rest.mq_async_route import bp as mq_async_bp
 from routes.internal.cpu_heavy_route import bp as cpu_heavy_internal_bp
 from routes.external_grpc.cpu_heavy_route import bp as cpu_heavy_grpc_bp
+from routes.external_rest.redis_cache_route import bp as redis_cache_bp
 
 blueprints = [
     user_internal_bp,
@@ -11,5 +12,6 @@ blueprints = [
     ping_grpc_bp,
     mq_async_bp,
     cpu_heavy_internal_bp,
-    cpu_heavy_grpc_bp
+    cpu_heavy_grpc_bp,
+    redis_cache_bp
 ]

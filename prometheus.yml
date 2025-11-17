@@ -20,10 +20,10 @@ scrape_configs:
       - targets: ['msa-perf-node-exporter:9100']
   
   # Flask Gateway 모니터링
-  # - job_name: 'flask-gateway'
-  #   metrics_path: /metrics
-  #   static_configs:
-  #     - targets: ['msa-perf-flask-gateway:5000']
+  - job_name: 'flask-gateway'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['msa-perf-flask-gateway:5000']
   
   # Go Core 모니터링
   # - job_name: 'gocore'

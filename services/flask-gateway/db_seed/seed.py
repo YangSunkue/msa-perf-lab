@@ -1,5 +1,5 @@
 from app import app, db
-from model import User
+from models.user import User
 
 with app.app_context():
     users = [
